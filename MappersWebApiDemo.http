@@ -1,0 +1,6 @@
+@MappersWebApiDemo_HostAddress = http://localhost:5293
+
+GET {{MappersWebApiDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
