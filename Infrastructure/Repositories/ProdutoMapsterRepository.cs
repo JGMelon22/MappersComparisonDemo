@@ -73,13 +73,8 @@ public class ProdutoMapsterRepository : IProdutoRepository
                 .FindAsync(id)
                 ?? throw new Exception("Produto não encontrado!");
 
-            // produto = updatedProduct.Adapt(produto);
-            
-            updatedProduct.Adapt(produto);
 
-            // produto.Nome = updatedProduct.Nome;
-            // produto.Preco = updatedProduct.Preco;
-            // produto.Disponivel = produto.Disponivel;
+            updatedProduct.Adapt(produto);
 
             await _dbContext.SaveChangesAsync();
 

@@ -74,13 +74,11 @@ public class ProdutoMapperlyRepository : IProdutoRepository
             .FindAsync(id)
             ?? throw new Exception("Produto não encontrado!");
 
-            produto.Nome = updatedProduct.Nome;
-            produto.Preco = updatedProduct.Preco;
-            produto.Disponivel = produto.Disponivel;
+            var mapper = new ProdutoMapper();
+            mapper.ProdutoToProdutoInput(updatedProduct);
 
             await _dbContext.SaveChangesAsync();
 
-            var mapper = new ProdutoMapper();
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 
             serviceResponse.Data = produtoResult;
