@@ -18,12 +18,13 @@ public class ProdutoMapsterRepository : IProdutoRepository
 
         try
         {
+            // Utilizando o méotodo .Adapt, mapeamos o conteúdo vindo de ProdutoInput para a nossa model
             var produto = newProduto.Adapt<Produto>();
 
             await _dbContext.Produtos.AddAsync(produto);
             await _dbContext.SaveChangesAsync();
 
-
+            // E novamente mapeamos para o resultado com os campos que queremos listas da DTO de resultado
             var produtoResult = produto.Adapt<ProdutoResult>();
 
             serviceResponse.Data = produtoResult;
@@ -49,6 +50,7 @@ public class ProdutoMapsterRepository : IProdutoRepository
                 .ToListAsync()
                 ?? throw new Exception("Lista de Produtos vazia!");
 
+            // Similar ao AtuoMapper, com apenas uma linha de código mapeamos a nossa lista, porém com o método .Adapt
             var produtosMapeados = produtos.Adapt<List<ProdutoResult>>().ToList();
 
             serviceResponse.Data = produtosMapeados;
@@ -73,11 +75,12 @@ public class ProdutoMapsterRepository : IProdutoRepository
                 .FindAsync(id)
                 ?? throw new Exception("Produto não encontrado!");
 
-
+            // Mapeando o conteúdo do input para refletir no produto pesquisado a ser atualizado
             updatedProduct.Adapt(produto);
 
             await _dbContext.SaveChangesAsync();
-
+            
+            // E retornamos ele mapeado para a DTO de resultado
             serviceResponse.Data = produto.Adapt<ProdutoResult>();
         }
         catch (Exception ex)

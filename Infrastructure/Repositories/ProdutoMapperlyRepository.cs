@@ -18,12 +18,18 @@ public class ProdutoMapperlyRepository : IProdutoRepository
 
         try
         {
+            // Instanciamos nossa classe "especial" e
+            // a partir do "ProdutoToProdutoInput" mapeamos o 
+            // Novo Produto vindo do input para nossa model
             var mapper = new ProdutoMapper();
             var produto = mapper.ProdutoToProdutoInput(newProduto);
 
             await _dbContext.Produtos.AddAsync(produto);
             await _dbContext.SaveChangesAsync();
 
+
+            // Em seguida, com intuito de mostrar para o usuário o novo produto adicionado como feedback
+            // Mapeamos para o result DTO
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 
             serviceResponse.Data = produtoResult;
@@ -49,6 +55,8 @@ public class ProdutoMapperlyRepository : IProdutoRepository
                 .ToListAsync()
                 ?? throw new Exception("Lista de Produtos vazia!");
 
+            // Por não estarmos trabalhando com injeção de dependência, precisamos declarar a classe "especial" e
+            // em seguida chamarmos o método responsável por mapear a lista de produtos para respeitar as propriedades da DTO de resultado
             var mapper = new ProdutoMapper();
             var produtosMapeados = produtos.Select(x => mapper.ProdutoToProdutoResult(x)).ToList();
 
@@ -74,11 +82,14 @@ public class ProdutoMapperlyRepository : IProdutoRepository
             .FindAsync(id)
             ?? throw new Exception("Produto não encontrado!");
 
+            // Instanciar a classe "especial"
+            // Mapear o input de dados para refletir na model
             var mapper = new ProdutoMapper();
             mapper.ProdutoToProdutoInput(updatedProduct);
 
             await _dbContext.SaveChangesAsync();
 
+            // Mapear o produto atualizado para retornar suas informações baseadas no que consta na result DTO
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 
             serviceResponse.Data = produtoResult;
