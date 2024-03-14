@@ -26,8 +26,9 @@ public class ProdutoAutoMapperRepository : IProdutoRepository
             await _dbContext.Produtos.AddAsync(produto);
             await _dbContext.SaveChangesAsync();
 
+            // Novamente, utilzando a função .Map, mapeamos o input com a nossa DTO     
+            // Bem mais simples, não?
             var produtoResult = _mapper.Map<ProdutoResult>(produto);
-
 
             serviceResponse.Data = produtoResult;
         }
@@ -52,6 +53,7 @@ public class ProdutoAutoMapperRepository : IProdutoRepository
                 .ToListAsync()
                 ?? throw new Exception("Lista de Produtos vazia!");
 
+            // Em apenas uma linha de código mapeamos a nossa lista de produtos utilizando a função .Map
             var produtosMapeados = produtos.Select(x => _mapper.Map<ProdutoResult>(x)).ToList();
 
             serviceResponse.Data = produtosMapeados;
@@ -76,18 +78,11 @@ public class ProdutoAutoMapperRepository : IProdutoRepository
             .FindAsync(id)
             ?? throw new Exception("Produto não encontrado!");
 
-            produto.Nome = updatedProduct.Nome;
-            produto.Preco = updatedProduct.Preco;
-            produto.Disponivel = produto.Disponivel;
+            _mapper.Map(updatedProduct, produto); // Mapeando o conteúdo recebido para refletir na model 
 
             await _dbContext.SaveChangesAsync();
 
-            var produtoResult = new ProdutoResult
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-            };
+            var produtoResult = _mapper.Map<ProdutoResult>(produto); // Novamente mapeamos para retornar o resultado com os campos que desejamos
 
             serviceResponse.Data = produtoResult;
         }

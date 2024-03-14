@@ -17,7 +17,7 @@ public class ProdutoRepository : IProdutoRepository
 
         try
         {
-            var produto = new Produto
+            var produto = new Produto // Necessidade de instanciar o objeto base e mapear com o input recebido
             {
                 Nome = newProduto.Nome,
                 Preco = newProduto.Preco,
@@ -59,11 +59,11 @@ public class ProdutoRepository : IProdutoRepository
                 .ToListAsync()
                 ?? throw new Exception("Lista de Produtos vazia!");
 
-            var produtosMapeados = new List<ProdutoResult>();
+            var produtosMapeados = new List<ProdutoResult>(); // Lista vazia para adicionar os itens mapeados
 
             foreach (var produto in produtos)
             {
-                var produtoResult = new ProdutoResult
+                var produtoResult = new ProdutoResult // Mapeando os itens manualmente
                 {
                     Id = produto.Id,
                     Nome = produto.Nome,
@@ -95,13 +95,13 @@ public class ProdutoRepository : IProdutoRepository
             .FindAsync(id)
             ?? throw new Exception("Produto não encontrado!");
 
-            produto.Nome = updatedProduct.Nome;
+            produto.Nome = updatedProduct.Nome; // Mapeando o produtos encontrado com o Input do usuário
             produto.Preco = updatedProduct.Preco;
             produto.Disponivel = produto.Disponivel;
 
             await _dbContext.SaveChangesAsync();
 
-            var produtoResult = new ProdutoResult
+            var produtoResult = new ProdutoResult // Mapeando o Produto atualizado para retornar apenas os campos desejados
             {
                 Id = produto.Id,
                 Nome = produto.Nome,
