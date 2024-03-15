@@ -19,7 +19,7 @@ public class SwaggerConfigOptions : IConfigureOptions<SwaggerGenOptions>
         foreach (var description in _apiVersionDescriptionProvider.ApiVersionDescriptions)
             options.SwaggerDoc(description.GroupName, new OpenApiInfo
             {
-                Title = "MappersWebApiDemo",
+                Title = "MappersWebApiDemo.Tests",
                 Version = description.ApiVersion.ToString()
             });
     }

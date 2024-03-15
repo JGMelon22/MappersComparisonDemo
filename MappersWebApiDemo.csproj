@@ -51,4 +51,10 @@
         </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="MappersWebApiDemo.Tests\UnitTest1.cs">
+        <Link>MappersWebApiDemo\UnitTest1.cs</Link>
+      </Compile>
+    </ItemGroup>
+
 </Project>
