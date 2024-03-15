@@ -6,6 +6,7 @@ namespace MappersWebApiDemo.Infrastructure.Repositories;
 public class ProdutoRepository : IProdutoRepository
 {
     private readonly AppDbContext _dbContext;
+
     public ProdutoRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -32,7 +33,7 @@ public class ProdutoRepository : IProdutoRepository
             {
                 Id = produto.Id,
                 Nome = produto.Nome,
-                Preco = produto.Preco,
+                Preco = produto.Preco
                 // Não queremos mostrar para o usuário o campo "Disponível" (regra besta, releve)
             };
 
@@ -54,10 +55,10 @@ public class ProdutoRepository : IProdutoRepository
         try
         {
             var produtos = await _dbContext
-                .Produtos
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Lista de Produtos vazia!");
+                               .Produtos
+                               .AsNoTracking()
+                               .ToListAsync()
+                           ?? throw new Exception("Lista de Produtos vazia!");
 
             var produtosMapeados = new List<ProdutoResult>(); // Lista vazia para adicionar os itens mapeados
 
@@ -91,9 +92,9 @@ public class ProdutoRepository : IProdutoRepository
         try
         {
             var produto = await _dbContext
-            .Produtos
-            .FindAsync(id)
-            ?? throw new Exception("Produto não encontrado!");
+                              .Produtos
+                              .FindAsync(id)
+                          ?? throw new Exception("Produto não encontrado!");
 
             produto.Nome = updatedProduct.Nome; // Mapeando o produtos encontrado com o Input do usuário
             produto.Preco = updatedProduct.Preco;
@@ -101,12 +102,13 @@ public class ProdutoRepository : IProdutoRepository
 
             await _dbContext.SaveChangesAsync();
 
-            var produtoResult = new ProdutoResult // Mapeando o Produto atualizado para retornar apenas os campos desejados
-            {
-                Id = produto.Id,
-                Nome = produto.Nome,
-                Preco = produto.Preco,
-            };
+            var produtoResult =
+                new ProdutoResult // Mapeando o Produto atualizado para retornar apenas os campos desejados
+                {
+                    Id = produto.Id,
+                    Nome = produto.Nome,
+                    Preco = produto.Preco
+                };
 
             serviceResponse.Data = produtoResult;
         }

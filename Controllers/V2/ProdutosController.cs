@@ -1,10 +1,12 @@
+using Asp.Versioning;
 using MappersWebApiDemo.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MappersWebApiDemo.Controllers;
+namespace MappersWebApiDemo.Controllers.V2;
 
+[ApiVersion("2.0")]
 [ApiController]
-[Route("api/[controller]")]
+[Route("v{version:apiVersion}/automapper-mapping/[controller]")]
 public class ProdutosController : ControllerBase
 {
     private readonly IProdutoRepository _repository;

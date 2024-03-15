@@ -7,6 +7,7 @@ namespace MappersWebApiDemo.Infrastructure.Repositories;
 public class ProdutoMapsterRepository : IProdutoRepository
 {
     private readonly AppDbContext _dbContext;
+
     public ProdutoMapsterRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -45,10 +46,10 @@ public class ProdutoMapsterRepository : IProdutoRepository
         try
         {
             var produtos = await _dbContext
-                .Produtos
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Lista de Produtos vazia!");
+                               .Produtos
+                               .AsNoTracking()
+                               .ToListAsync()
+                           ?? throw new Exception("Lista de Produtos vazia!");
 
             // Similar ao AtuoMapper, com apenas uma linha de código mapeamos a nossa lista, porém com o método .Adapt
             var produtosMapeados = produtos.Adapt<List<ProdutoResult>>().ToList();
@@ -71,15 +72,15 @@ public class ProdutoMapsterRepository : IProdutoRepository
         try
         {
             var produto = await _dbContext
-                .Produtos
-                .FindAsync(id)
-                ?? throw new Exception("Produto não encontrado!");
+                              .Produtos
+                              .FindAsync(id)
+                          ?? throw new Exception("Produto não encontrado!");
 
             // Mapeando o conteúdo do input para refletir no produto pesquisado a ser atualizado
             updatedProduct.Adapt(produto);
 
             await _dbContext.SaveChangesAsync();
-            
+
             // E retornamos ele mapeado para a DTO de resultado
             serviceResponse.Data = produto.Adapt<ProdutoResult>();
         }

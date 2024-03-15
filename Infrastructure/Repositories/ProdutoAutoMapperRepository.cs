@@ -48,10 +48,10 @@ public class ProdutoAutoMapperRepository : IProdutoRepository
         try
         {
             var produtos = await _dbContext
-                .Produtos
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Lista de Produtos vazia!");
+                               .Produtos
+                               .AsNoTracking()
+                               .ToListAsync()
+                           ?? throw new Exception("Lista de Produtos vazia!");
 
             // Em apenas uma linha de código mapeamos a nossa lista de produtos utilizando a função .Map
             var produtosMapeados = produtos.Select(x => _mapper.Map<ProdutoResult>(x)).ToList();
@@ -74,15 +74,17 @@ public class ProdutoAutoMapperRepository : IProdutoRepository
         try
         {
             var produto = await _dbContext
-            .Produtos
-            .FindAsync(id)
-            ?? throw new Exception("Produto não encontrado!");
+                              .Produtos
+                              .FindAsync(id)
+                          ?? throw new Exception("Produto não encontrado!");
 
             _mapper.Map(updatedProduct, produto); // Mapeando o conteúdo recebido para refletir na model 
 
             await _dbContext.SaveChangesAsync();
 
-            var produtoResult = _mapper.Map<ProdutoResult>(produto); // Novamente mapeamos para retornar o resultado com os campos que desejamos
+            var produtoResult =
+                _mapper.Map<ProdutoResult>(
+                    produto); // Novamente mapeamos para retornar o resultado com os campos que desejamos
 
             serviceResponse.Data = produtoResult;
         }

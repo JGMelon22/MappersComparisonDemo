@@ -7,6 +7,7 @@ namespace MappersWebApiDemo.Infrastructure.Repositories;
 public class ProdutoMapperlyRepository : IProdutoRepository
 {
     private readonly AppDbContext _dbContext;
+
     public ProdutoMapperlyRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -50,10 +51,10 @@ public class ProdutoMapperlyRepository : IProdutoRepository
         try
         {
             var produtos = await _dbContext
-                .Produtos
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Lista de Produtos vazia!");
+                               .Produtos
+                               .AsNoTracking()
+                               .ToListAsync()
+                           ?? throw new Exception("Lista de Produtos vazia!");
 
             // Por não estarmos trabalhando com injeção de dependência, precisamos declarar a classe "especial" e
             // em seguida chamarmos o método responsável por mapear a lista de produtos para respeitar as propriedades da DTO de resultado
@@ -78,9 +79,9 @@ public class ProdutoMapperlyRepository : IProdutoRepository
         try
         {
             var produto = await _dbContext
-            .Produtos
-            .FindAsync(id)
-            ?? throw new Exception("Produto não encontrado!");
+                              .Produtos
+                              .FindAsync(id)
+                          ?? throw new Exception("Produto não encontrado!");
 
             // Instanciar a classe "especial"
             // Mapear o input de dados para refletir na model
