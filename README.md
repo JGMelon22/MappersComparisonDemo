@@ -17,6 +17,14 @@ Comparing manual mapping approach against popular NuGet mappers packages
     <li>SQLite</li>
 </ul>
 
+<h3>Versioning</h3>
+<ul>
+    <li>V1 - Manual Mapping</li>
+    <li>V2 - AutoMapper</li>
+    <li>V3 - Mapster</li>
+    <li>V4 - Mapperly</li>
+</ul>
+
 <div style="display: inline_block" class="flex-container"><br>
         <img align="center" alt="CSharp" height="5%" width="5%" <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
