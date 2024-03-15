@@ -1,4 +1,5 @@
 # MappersComparisonDemo
+
 Comparing manual mapping approach against popular NuGet mappers packages
 
 <h2>Mappers</h2>
@@ -14,6 +15,14 @@ Comparing manual mapping approach against popular NuGet mappers packages
     <li>C# 12</li>
     <li>Visual Studio Code</li>
     <li>SQLite</li>
+</ul>
+
+<h3>Versioning</h3>
+<ul>
+    <li>V1 - Manual Mapping</li>
+    <li>V2 - AutoMapper</li>
+    <li>V3 - Mapster</li>
+    <li>V4 - Mapperly</li>
 </ul>
 
 <div style="display: inline_block" class="flex-container"><br>
