@@ -90,6 +90,8 @@ public class ProdutoMapperlyRepository : IProdutoRepository
 
             await _dbContext.SaveChangesAsync();
 
+            System.Console.WriteLine("PAssei por aqui!");
+
             // Mapear o produto atualizado para retornar suas informações baseadas no que consta na result DTO
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 

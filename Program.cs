@@ -2,6 +2,7 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using MappersWebApiDemo.Config;
 using MappersWebApiDemo.Infrastructure.Data;
+using MappersWebApiDemo.Infrastructure.Mappling;
 using MappersWebApiDemo.Infrastructure.Repositories;
 using MappersWebApiDemo.Interfaces;
 using Microsoft.Extensions.Options;
@@ -25,9 +26,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("manual");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("automapper");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("mapster");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("mapperly");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoAutoMapperRepository>("automapper");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoMapsterRepository>("mapster");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoMapperlyRepository>("mapperly");
 
 // Swagger Versioning
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigOptions>();
