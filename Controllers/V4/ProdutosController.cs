@@ -11,7 +11,7 @@ public class ProdutosController : ControllerBase
 {
     private readonly IProdutoRepository _repository;
 
-    public ProdutosController(IProdutoRepository repository)
+    public ProdutosController([FromKeyedServices("mapperly")] IProdutoRepository repository)
     {
         _repository = repository;
     }

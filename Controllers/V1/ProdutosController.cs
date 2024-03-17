@@ -12,7 +12,7 @@ public class ProdutosController : ControllerBase
 {
     private readonly IProdutoRepository _repository;
 
-    public ProdutosController(IProdutoRepository repository)
+    public ProdutosController([FromKeyedServices("manual")] IProdutoRepository repository)
     {
         _repository = repository;
     }

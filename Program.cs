@@ -24,7 +24,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Registrando o serviço do AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("manual");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("automapper");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("mapster");
+builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("mapperly");
 
 // Swagger Versioning
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigOptions>();
