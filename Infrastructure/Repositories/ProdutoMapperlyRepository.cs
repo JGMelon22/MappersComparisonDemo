@@ -83,16 +83,15 @@ public class ProdutoMapperlyRepository : IProdutoRepository
                               .FindAsync(id)
                           ?? throw new Exception("Produto não encontrado!");
 
-            // Instanciar a classe "especial"
             // Mapear o input de dados para refletir na model
-            var mapper = new ProdutoMapper();
-            mapper.ProdutoToProdutoInput(updatedProduct);
+            produto.Nome = updatedProduct.Nome;
+            produto.Preco = updatedProduct.Preco;
+            produto.Disponivel = updatedProduct.Disponivel;
 
             await _dbContext.SaveChangesAsync();
 
-            System.Console.WriteLine("PAssei por aqui!");
-
             // Mapear o produto atualizado para retornar suas informações baseadas no que consta na result DTO
+            var mapper = new ProdutoMapper();
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 
             serviceResponse.Data = produtoResult;

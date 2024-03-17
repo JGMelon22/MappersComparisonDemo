@@ -2,7 +2,6 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using MappersWebApiDemo.Config;
 using MappersWebApiDemo.Infrastructure.Data;
-using MappersWebApiDemo.Infrastructure.Mappling;
 using MappersWebApiDemo.Infrastructure.Repositories;
 using MappersWebApiDemo.Interfaces;
 using Microsoft.Extensions.Options;
