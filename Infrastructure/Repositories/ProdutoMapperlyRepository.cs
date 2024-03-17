@@ -84,14 +84,12 @@ public class ProdutoMapperlyRepository : IProdutoRepository
                           ?? throw new Exception("Produto não encontrado!");
 
             // Mapear o input de dados para refletir na model
-            produto.Nome = updatedProduct.Nome;
-            produto.Preco = updatedProduct.Preco;
-            produto.Disponivel = updatedProduct.Disponivel;
+            var mapper = new ProdutoMapper();
+            mapper.ApplyUpdate(updatedProduct, produto);
 
             await _dbContext.SaveChangesAsync();
 
             // Mapear o produto atualizado para retornar suas informações baseadas no que consta na result DTO
-            var mapper = new ProdutoMapper();
             var produtoResult = mapper.ProdutoToProdutoResult(produto);
 
             serviceResponse.Data = produtoResult;
