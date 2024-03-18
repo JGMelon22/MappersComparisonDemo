@@ -31,21 +31,6 @@
         <Reference Include="FakeItEasy">
             <HintPath>..\..\..\..\.nuget\packages\fakeiteasy\8.1.0\lib\net6.0\FakeItEasy.dll</HintPath>
         </Reference>
-        <Reference Include="FluentAssertions">
-            <HintPath>..\..\..\..\.nuget\packages\fluentassertions\6.12.0\lib\net6.0\FluentAssertions.dll</HintPath>
-        </Reference>
-        <Reference Include="FluentAssertions">
-            <HintPath>..\..\..\..\.nuget\packages\fluentassertions\6.12.0\lib\net6.0\FluentAssertions.dll</HintPath>
-        </Reference>
-        <Reference Include="xunit.core">
-            <HintPath>..\..\..\..\.nuget\packages\xunit.extensibility.core\2.5.3\lib\netstandard1.1\xunit.core.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Reference Include="FakeItEasy">
-            <HintPath>..\..\..\..\.nuget\packages\fakeiteasy\8.1.0\lib\net6.0\FakeItEasy.dll</HintPath>
-        </Reference>
         <Reference Include="xunit.core">
             <HintPath>..\..\..\..\.nuget\packages\xunit.extensibility.core\2.5.3\lib\netstandard1.1\xunit.core.dll</HintPath>
         </Reference>
