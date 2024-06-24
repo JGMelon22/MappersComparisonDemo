@@ -7,24 +7,24 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Asp.Versioning.Mvc" Version="8.0.0"/>
-        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0"/>
-        <PackageReference Include="AutoMapper" Version="13.0.1"/>
-        <PackageReference Include="Mapster" Version="7.4.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+        <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.0" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="Mapster" Version="7.4.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3"/>
-        <PackageReference Include="Riok.Mapperly" Version="3.4.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+        <PackageReference Include="Riok.Mapperly" Version="3.6.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\MappersWebApiDemo.Tests.csproj.nuget.dgspec.json"/>
-        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\project.assets.json"/>
-        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\project.packagespec.json"/>
+        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\MappersWebApiDemo.Tests.csproj.nuget.dgspec.json" />
+        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\project.assets.json" />
+        <_ContentIncludedByDefault Remove="MappersWebApiDemo.Tests\obj\project.packagespec.json" />
     </ItemGroup>
 
     <ItemGroup>
