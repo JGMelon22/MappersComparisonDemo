@@ -1,9 +1,8 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
+using MappersComparisonDemo.Configuration;
 using MappersWebApiDemo.Config;
 using MappersWebApiDemo.Infrastructure.Data;
-using MappersWebApiDemo.Infrastructure.Repositories;
-using MappersWebApiDemo.Interfaces;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -24,10 +23,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Registrando o serviço do AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoRepository>("manual");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoAutoMapperRepository>("automapper");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoMapsterRepository>("mapster");
-builder.Services.AddKeyedScoped<IProdutoRepository, ProdutoMapperlyRepository>("mapperly");
+// Repository Service Register
+builder.Services.AddRepositories();
 
 // Swagger Versioning
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigOptions>();
